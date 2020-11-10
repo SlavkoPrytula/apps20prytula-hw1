@@ -24,12 +24,14 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() throws IllegalArgumentException {
+        throwException();
         int size = temperatureSeries.length;
         double sum = sum();
         return sum / size;
     }
 
     public double deviation() throws IllegalArgumentException {
+        throwException();
         double deviation;
         double mean = mean();
         double summation = 0;
@@ -41,6 +43,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() throws IllegalArgumentException {
+        throwException();
         double min = temperatureSeries[0];
         for(double temp : temperatureSeries) {
             if(temp < min) {
@@ -51,6 +54,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double max() throws IllegalArgumentException {
+        throwException();
         double max = temperatureSeries[0];
         for(double temp : temperatureSeries) {
             if(temp > max) {
@@ -65,6 +69,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) throws IllegalArgumentException {
+        throwException();
         double closestLeft = Double.MAX_VALUE;
         double closestRight = Double.MAX_VALUE;
         // sort array to filter temperatures from the smallest to greatest
@@ -112,14 +117,18 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TempSummaryStatistics summaryStatistics() {
+        throwException();
+        // returns an immutable instance of a class
         return TempSummaryStatistics.createNewInstance(average(), deviation(), min(), max());
     }
 
     public int addTemps(double[] temps) {
-        // Assertions are removed at runtime unless you explicitly specify
-        // to "enable assertions" when compiling your code
         if(!checkBounds(temps)) {
             throw new InputMismatchException();
+        }
+        // set buff to 2
+        if(temperatureSeries.length == 0) {
+            temperatureSeries = Arrays.copyOf(temperatureSeries, 2);
         }
         // increase buff size
         while (temperatureSeries.length < Index + temps.length) {
@@ -141,6 +150,13 @@ public class TemperatureSeriesAnalysis {
         }
         return true;
     }
+
+    public void throwException() {
+        if(temperatureSeries.length == 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void sortTemps() {
         // sort array
         Arrays.sort(temperatureSeries);

@@ -174,14 +174,126 @@ public class TemperatureSeriesAnalysisTest {
     @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
+        // setup input data and expected result
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        // expect exception here
-//        double actualResult = seriesAnalysis.average();
-//        Exception expResult = new IllegalArgumentException();
-//
-//        assertEquals(expResult, actualResult);
+
+        // call function
+        seriesAnalysis.average();
     }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testDeviationWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call function
+        seriesAnalysis.deviation();
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testMinWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call function
+        seriesAnalysis.min();
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testMaxWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call function
+        seriesAnalysis.max();
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testClosestToZeroWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call function
+        seriesAnalysis.findTempClosestToZero();
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void closestToValueWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call function
+        seriesAnalysis.findTempClosestToValue(0);
+    }
+
+    @Ignore
+    @Test
+    public void testLessThenWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expResult = {};
+
+        // call tested method
+        double[] actualResult = seriesAnalysis.findTempsLessThen(1.0);
+
+        // compare expected result with actual result
+        assertArrayEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test
+    public void testGreaterThenWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expResult = {};
+
+        // call tested method
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(1.0);
+
+        // compare expected result with actual result
+        assertArrayEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test
+    public void testAddTempsWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expResult = 4;
+
+        // call tested method
+        int actualResult = seriesAnalysis.addTemps(newTemperatureSeries);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testSummaryStatisticsWithEmptyArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call tested method
+        seriesAnalysis.summaryStatistics();
+    }
+
 
 
     //  --------------------- FOR MANY ELEMENTS IN THE LIST ---------------------
@@ -349,7 +461,4 @@ public class TemperatureSeriesAnalysisTest {
         min = 100;
         max = 100;
     }
-
-
-
 }
