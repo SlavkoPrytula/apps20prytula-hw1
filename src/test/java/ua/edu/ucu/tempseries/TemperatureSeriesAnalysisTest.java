@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
 
@@ -148,6 +149,18 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Ignore
+    @Test(expected = InputMismatchException.class)
+    public void testAddTempsWithOneElementArrayError() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0};
+        double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0, -274.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call tested method
+        seriesAnalysis.addTemps(newTemperatureSeries);
+    }
+
+    @Ignore
     @Test
     public void testSummaryStatisticsWithOneElementArray() {
         // setup input data and expected result
@@ -281,6 +294,18 @@ public class TemperatureSeriesAnalysisTest {
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test(expected = InputMismatchException.class)
+    public void testAddTempsWithEmptyArrayError() {
+        // setup input data and expected result
+        double[] temperatureSeries = {};
+        double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0, -274.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call tested method
+        seriesAnalysis.addTemps(newTemperatureSeries);
     }
 
     @Ignore
@@ -425,6 +450,22 @@ public class TemperatureSeriesAnalysisTest {
         // setup input data and expected result
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expResult = 14;
+
+        // call tested method
+        int actualResult = seriesAnalysis.addTemps(newTemperatureSeries);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test(expected = InputMismatchException.class)
+    public void testAddTempsError() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0, -274.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         int expResult = 14;
 
