@@ -112,7 +112,7 @@ public class TemperatureSeriesAnalysisTest {
         System.out.println(Arrays.toString(actualResult));
 
         // compare expected result with actual result
-//        assertEquals(expResult, actualResult, 0.00001);
+        assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Ignore
@@ -128,7 +128,7 @@ public class TemperatureSeriesAnalysisTest {
         System.out.println(Arrays.toString(actualResult));
 
         // compare expected result with actual result
-//        assertEquals(expResult, actualResult, 0.00001);
+        assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Ignore
@@ -145,6 +145,26 @@ public class TemperatureSeriesAnalysisTest {
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test
+    public void testSummaryStatisticsWithOneElementArray() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        String expResult = "Average: -1.0\n" +
+                            "Deviation: 0.0\n" +
+                            "Min: -1.0\n" +
+                            "Max: -1.0";
+
+        // call tested method
+        TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
+        tryModification(actualResult.setAvrTemp(), actualResult.getDevTemp(), actualResult.getMinTemp(), actualResult.getMaxTemp());
+        System.out.println(actualResult);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult.toString());
     }
 
 
@@ -263,13 +283,13 @@ public class TemperatureSeriesAnalysisTest {
         // setup input data and expected result
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double[] expResult = {15.3, 10.9, 20.4, 19.9, 20.0};
+        double[] expResult = {-7.5, 0.1, -1.0, 0.9};
 
         // call tested method
         double[] actualResult = seriesAnalysis.findTempsLessThen(1.0);
 
         // compare expected result with actual result
-//        assertEquals(expResult, actualResult, 0.00001);
+        assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Ignore
@@ -284,7 +304,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] actualResult = seriesAnalysis.findTempsGreaterThen(1.0);
 
         // compare expected result with actual result
-//        assertEquals(expResult, actualResult, 0.00001);
+        assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Ignore
@@ -301,6 +321,33 @@ public class TemperatureSeriesAnalysisTest {
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Ignore
+    @Test
+    public void testSummaryStatistics() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        String expResult = "Average: 8.0\n" +
+                            "Deviation: 12.170312239215558\n" +
+                            "Min: -7.5\n" +
+                            "Max: 20.4";
+
+        // call tested method
+        TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
+        tryModification(actualResult.setAvrTemp(), actualResult.getDevTemp(), actualResult.getMinTemp(), actualResult.getMaxTemp());
+        System.out.println(actualResult);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult.toString());
+    }
+
+    private static void tryModification(double avr, double dev, double min, double max) {
+        avr = 100;
+        dev = 100;
+        min = 100;
+        max = 100;
     }
 
 

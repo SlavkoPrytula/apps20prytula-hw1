@@ -10,7 +10,7 @@ public class TemperatureSeriesAnalysis {
     private int Index;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        // initialization with parameters
+        // constructor with parameters
         this.temperatureSeries = temperatureSeries;
         System.out.println(Arrays.toString(temperatureSeries));
         System.out.println(Arrays.toString(temperatureSeries));
@@ -18,7 +18,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis() {
-        // initialization with no parameters
+        // default constructor
         this.temperatureSeries = new double[0];
         this.Index = 0;
     }
@@ -112,7 +112,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TempSummaryStatistics summaryStatistics() {
-        return new TempSummaryStatistics();
+        return TempSummaryStatistics.createNewInstance(average(), deviation(), min(), max());
     }
 
     public int addTemps(double[] temps) {
