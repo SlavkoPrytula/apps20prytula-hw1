@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class TemperatureSeriesAnalysisTest {
 
     //  --------------------- FOR ONE ELEMENT LIST ---------------------
-
+    @Ignore
     @Test
     public void testAverageWithOneElementArray() {
         // setup input data and expected result
@@ -38,7 +38,7 @@ public class TemperatureSeriesAnalysisTest {
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
     }
-
+    @Ignore
     @Test
     public void testMinWithOneElementArray() {
         // setup input data and expected result
