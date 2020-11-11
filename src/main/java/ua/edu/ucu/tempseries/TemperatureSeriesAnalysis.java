@@ -8,6 +8,7 @@ public class TemperatureSeriesAnalysis {
     // define
     private double[] temperatureSeries;
     private int index;
+    public final int LOWER_BOUND = -273;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
@@ -84,8 +85,8 @@ public class TemperatureSeriesAnalysis {
             }
         }
         // compare results
-        if (Math.abs(closestLeft - tempValue) <
-                Math.abs(closestRight - tempValue)) {
+        if (Math.abs(closestLeft - tempValue)
+                < Math.abs(closestRight - tempValue)) {
             return closestLeft;
         } else {
             return closestRight;
@@ -152,8 +153,7 @@ public class TemperatureSeriesAnalysis {
     public boolean checkBounds(double[] temps) {
         // check for correct bounds
         for (double temp : temps) {
-            int lowerBound = -273;
-            if (temp < lowerBound) {
+            if (temp < LOWER_BOUND) {
                 return false;
             }
         }
@@ -184,7 +184,8 @@ public class TemperatureSeriesAnalysis {
         // find the mean value of elements in the array
         if (temperatureSeries.length % 2 == 0) {
             return (temperatureSeries[(temperatureSeries.length - 1) / 2]
-                    + temperatureSeries[(temperatureSeries.length - 1) / 2 + 1]) / 2;
+                    + temperatureSeries[(temperatureSeries.length - 1) / 2
+                    + 1]) / 2;
         } else {
             return temperatureSeries[(temperatureSeries.length - 1) / 2];
         }
