@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysisTest {
 
     //  --------------------- FOR ONE ELEMENT LIST ---------------------
-    @Ignore
+//    @Ignore
     @Test
     public void testAverageWithOneElementArray() {
         // setup input data and expected result
@@ -25,7 +25,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testDeviationWithOneElementArray() {
         // setup input data and expected result
@@ -39,7 +39,7 @@ public class TemperatureSeriesAnalysisTest {
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
     }
-    @Ignore
+//    @Ignore
     @Test
     public void testMinWithOneElementArray() {
         // setup input data and expected result
@@ -55,7 +55,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
 
-    @Ignore
+//    @Ignore
     @Test
     public void testMaxWithOneElementArray() {
         // setup input data and expected result
@@ -70,7 +70,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testClosestToZeroWithOneElementArray() {
         // setup input data and expected result
@@ -85,7 +85,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testClosestToValueWithOneElementArray() {
         // setup input data and expected result
@@ -100,7 +100,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testLessThenWithOneElementArray() {
         // setup input data and expected result
@@ -116,7 +116,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testGreaterThenWithOneElementArray() {
         // setup input data and expected result
@@ -132,7 +132,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testAddTempsWithOneElementArray() {
         // setup input data and expected result
@@ -148,7 +148,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = InputMismatchException.class)
     public void testAddTempsWithOneElementArrayError() {
         // setup input data and expected result
@@ -160,7 +160,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.addTemps(newTemperatureSeries);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testSummaryStatisticsWithOneElementArray() {
         // setup input data and expected result
@@ -173,7 +173,6 @@ public class TemperatureSeriesAnalysisTest {
 
         // call tested method
         TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
-        tryModification(actualResult.setAvrTemp(), actualResult.getDevTemp(), actualResult.getMinTemp(), actualResult.getMaxTemp());
         System.out.println(actualResult);
 
         // compare expected result with actual result
@@ -184,7 +183,7 @@ public class TemperatureSeriesAnalysisTest {
 
     //  --------------------- FOR EMPTY LIST ---------------------
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         // setup input data and expected result
@@ -195,7 +194,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.average();
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testDeviationWithEmptyArray() {
         // setup input data and expected result
@@ -206,7 +205,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.deviation();
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testMinWithEmptyArray() {
         // setup input data and expected result
@@ -217,7 +216,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.min();
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testMaxWithEmptyArray() {
         // setup input data and expected result
@@ -228,7 +227,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.max();
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testClosestToZeroWithEmptyArray() {
         // setup input data and expected result
@@ -239,7 +238,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.findTempClosestToZero();
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void closestToValueWithEmptyArray() {
         // setup input data and expected result
@@ -250,7 +249,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.findTempClosestToValue(0);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testLessThenWithEmptyArray() {
         // setup input data and expected result
@@ -265,7 +264,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testGreaterThenWithEmptyArray() {
         // setup input data and expected result
@@ -280,7 +279,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testAddTempsWithEmptyArray() {
         // setup input data and expected result
@@ -296,7 +295,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = InputMismatchException.class)
     public void testAddTempsWithEmptyArrayError() {
         // setup input data and expected result
@@ -308,7 +307,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.addTemps(newTemperatureSeries);
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testSummaryStatisticsWithEmptyArray() {
         // setup input data and expected result
@@ -324,7 +323,7 @@ public class TemperatureSeriesAnalysisTest {
     //  --------------------- FOR MANY ELEMENTS IN THE LIST ---------------------
 
 
-    @Ignore
+//    @Ignore
     @Test
     public void testAverage() {
         // setup input data and expected result
@@ -339,7 +338,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);        
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testDeviation() {
         // setup input data and expected result
@@ -354,7 +353,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testMin() {
         // setup input data and expected result
@@ -369,7 +368,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testMax() {
         // setup input data and expected result
@@ -384,7 +383,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testClosestToZero() {
         // setup input data and expected result
@@ -414,7 +413,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testLessThen() {
         // setup input data and expected result
@@ -429,7 +428,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testGreaterThen() {
         // setup input data and expected result
@@ -444,7 +443,7 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testAddTemps() {
         // setup input data and expected result
@@ -460,7 +459,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test(expected = InputMismatchException.class)
     public void testAddTempsError() {
         // setup input data and expected result
@@ -476,7 +475,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testSummaryStatistics() {
         // setup input data and expected result
@@ -489,17 +488,9 @@ public class TemperatureSeriesAnalysisTest {
 
         // call tested method
         TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
-        tryModification(actualResult.setAvrTemp(), actualResult.getDevTemp(), actualResult.getMinTemp(), actualResult.getMaxTemp());
         System.out.println(actualResult);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult.toString());
-    }
-
-    private static void tryModification(double avr, double dev, double min, double max) {
-        avr = 100;
-        dev = 100;
-        min = 100;
-        max = 100;
     }
 }

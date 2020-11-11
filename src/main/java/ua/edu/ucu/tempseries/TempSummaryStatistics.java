@@ -18,10 +18,6 @@ public final class TempSummaryStatistics {
         return new TempSummaryStatistics(avrTemp, devTemp, minTemp, maxTemp);
     }
 
-    public double setAvrTemp() {
-        return avrTemp + 10;
-    }
-
     public double getAvrTemp() {
         return avrTemp;
     }
