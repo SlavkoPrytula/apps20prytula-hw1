@@ -8,7 +8,7 @@ public class TemperatureSeriesAnalysis {
     // define
     private double[] temperatureSeries;
     private int index;
-    public final int LOWER_BOUND = -273;
+    private final int lowerBound = -273;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
@@ -153,7 +153,7 @@ public class TemperatureSeriesAnalysis {
     public boolean checkBounds(double[] temps) {
         // check for correct bounds
         for (double temp : temps) {
-            if (temp < LOWER_BOUND) {
+            if (temp < lowerBound) {
                 return false;
             }
         }
