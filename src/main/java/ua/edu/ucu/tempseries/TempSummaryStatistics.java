@@ -7,14 +7,18 @@ public final class TempSummaryStatistics {
     private final double minTemp;
     private final double maxTemp;
 
-    public TempSummaryStatistics(double avrTemp, double devTemp, double minTemp, double maxTemp) {
+    public TempSummaryStatistics(double avrTemp, double devTemp,
+                                 double minTemp, double maxTemp) {
         this.avrTemp = avrTemp;
         this.devTemp = devTemp;
         this.minTemp = minTemp;
         this.maxTemp = maxTemp;
     }
 
-    public static TempSummaryStatistics createNewInstance(double avrTemp, double devTemp, double minTemp, double maxTemp) {
+    public static TempSummaryStatistics createNewInstance(double avrTemp,
+                                                          double devTemp,
+                                                          double minTemp,
+                                                          double maxTemp) {
         return new TempSummaryStatistics(avrTemp, devTemp, minTemp, maxTemp);
     }
 
@@ -36,10 +40,10 @@ public final class TempSummaryStatistics {
 
     @Override
     public String toString() {
-        return "Average: " + getAvrTemp() + "\n" +
-                "Deviation: " + getDevTemp() + "\n" +
-                "Min: " +  getMinTemp() + "\n" +
-                "Max: " + getMaxTemp();
+        return "Average: " + getAvrTemp() + "\n"
+                + "Deviation: " + getDevTemp() + "\n"
+                + "Min: " +  getMinTemp() + "\n"
+                + "Max: " + getMaxTemp();
     }
 }
 
