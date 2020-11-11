@@ -54,7 +54,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testBounds() {
+    public void testBoundsFalse() {
         // setup input data and expected result
         double[] temperatureSeries = {-1.0, 0, 1.0, 2.0, -274.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
@@ -64,6 +64,19 @@ public class TemperatureSeriesAnalysisTest {
 
         // compare expected result with actual result
         assertFalse(actualResult);
+    }
+
+    @Test
+    public void testBoundsTrue() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0, 0, 1.0, 2.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // call tested method
+        boolean actualResult = seriesAnalysis.checkBounds(temperatureSeries);
+
+        // compare expected result with actual result
+        assertTrue(actualResult);
     }
 
     @Test(expected = IllegalArgumentException.class)
