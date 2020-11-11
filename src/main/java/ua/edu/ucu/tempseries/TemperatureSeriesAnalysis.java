@@ -25,6 +25,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() throws IllegalArgumentException {
+        // get average temperature
         throwException();
         int size = temperatureSeries.length;
         double sum = sum();
@@ -32,6 +33,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double deviation() throws IllegalArgumentException {
+        // get the deviation of the temperature
         throwException();
         double deviation;
         double mean = mean();
@@ -44,6 +46,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() throws IllegalArgumentException {
+        // find the minimum value
         throwException();
         double min = temperatureSeries[0];
         for (double temp : temperatureSeries) {
@@ -55,6 +58,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double max() throws IllegalArgumentException {
+        // find the maximum value
         throwException();
         double max = temperatureSeries[0];
         for (double temp : temperatureSeries) {
@@ -66,10 +70,12 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() {
+        // find the closest to zero temperature
         return findTempClosestToValue(0);
     }
 
     public double findTempClosestToValue(double tempValue)
+        // find the closest to a given value temperature
             throws IllegalArgumentException {
         throwException();
         double closestLeft = Double.MAX_VALUE;
@@ -94,6 +100,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
+        // find such elements that are smaller than the given value
         double[] tempsLessThen = new double[0];
         int ind = 0;
         for (double temp : temperatureSeries) {
@@ -108,6 +115,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
+        // find such elements that are greater than the given value
         double[] tempsGreaterThen = new double[0];
         int ind = 0;
         for (double temp : temperatureSeries) {
@@ -131,6 +139,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double[] temps) {
+        // add new temperatures
         if (!checkBounds(temps)) {
             throw new InputMismatchException();
         }
@@ -161,6 +170,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public void throwException() {
+        // throws exception if the list is empty
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }

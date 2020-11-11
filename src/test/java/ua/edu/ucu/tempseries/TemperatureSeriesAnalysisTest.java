@@ -2,7 +2,6 @@ package ua.edu.ucu.tempseries;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.junit.Ignore;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -87,6 +86,80 @@ public class TemperatureSeriesAnalysisTest {
 
         // call tested method
         seriesAnalysis.throwException();
+    }
+
+    @Test
+    public void testStatTemperatureAverage(){
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+//        String expResult = "Average: 8.0\n"
+//                + "Deviation: 9.920887057113392\n"
+//                + "Min: -7.5\n"
+//                + "Max: 20.4";
+
+        double expResult = 8.0;
+
+        // call tested method
+        TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
+        double actualResult = stats.getAvrTemp();
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testStatTemperatureDeviation(){
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 9.920887057113392;
+
+        // call tested method
+        TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
+        double actualResult = stats.getDevTemp();
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testStatTemperatureMin(){
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -7.5;
+
+        // call tested method
+        TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
+        double actualResult = stats.getMinTemp();
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testStatTemperatureMax(){
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 20.4;
+
+        // call tested method
+        TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
+        double actualResult = stats.getMaxTemp();
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testStatTemperatureString(){
+        // setup input data and expected result
+        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        String expResult = "Average: 8.0\n"
+                            + "Deviation: 9.920887057113392\n"
+                            + "Min: -7.5\n"
+                            + "Max: 20.4";
+
+        // call tested method
+        TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
+        String actualResult = stats.toString();
+        assertEquals(expResult, actualResult);
+
     }
 
     //  --------------------- FOR ONE ELEMENT LIST ---------------------

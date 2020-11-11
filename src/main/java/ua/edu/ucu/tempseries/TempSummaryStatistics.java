@@ -1,7 +1,8 @@
 package ua.edu.ucu.tempseries;
 
-
+// make class final to make it immutable
 public final class TempSummaryStatistics {
+    // define immutable variables
     private final double avrTemp;
     private final double devTemp;
     private final double minTemp;
@@ -22,6 +23,7 @@ public final class TempSummaryStatistics {
         return new TempSummaryStatistics(avrTemp, devTemp, minTemp, maxTemp);
     }
 
+    // local methods
     public double getAvrTemp() {
         return avrTemp;
     }
@@ -40,6 +42,7 @@ public final class TempSummaryStatistics {
 
     @Override
     public String toString() {
+        // represent statistics
         return "Average: " + getAvrTemp() + "\n"
                 + "Deviation: " + getDevTemp() + "\n"
                 + "Min: " +  getMinTemp() + "\n"
