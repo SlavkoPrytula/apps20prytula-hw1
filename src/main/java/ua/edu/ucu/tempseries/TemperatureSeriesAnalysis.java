@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 /**
  * This is the class used to perform different
  * calculations and transformations with arrays
- * and its values
+ * and its values.
  *
  * @author Yaroslav Prytula
  * @version 1.0
@@ -18,7 +18,7 @@ public class TemperatureSeriesAnalysis {
     private final int lowerBound = -273;
 
     /**
-     * constructor with parameters
+     * constructor with parameters.
      *
      * @param temperatureSeries - array of temperatures
      */
@@ -35,7 +35,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * vget average temperature
+     * get average temperature.
      *
      * @return average
      * @throws IllegalArgumentException IllegalArgumentException
@@ -49,7 +49,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * get the deviation of the temperature
+     * get the deviation of the temperature.
      *
      * @return deviation
      * @throws IllegalArgumentException IllegalArgumentException
@@ -68,7 +68,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the minimum value
+     * find the minimum value.
      *
      * @return min
      * @throws IllegalArgumentException IllegalArgumentException
@@ -86,7 +86,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the maximum value
+     * find the maximum value.
      *
      * @return max
      * @throws IllegalArgumentException IllegalArgumentException
@@ -104,7 +104,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the closest to zero temperature
+     * find the closest to zero temperature.
      *
      * @return closest value to zero
      */
@@ -114,7 +114,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the closest to a given value temperature
+     * find the closest to a given value temperature.
      *
      * @return closest value to a value
      */
@@ -144,7 +144,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find such elements that are smaller than the given value
+     * find such elements that are smaller than the given value.
      *
      * @param tempValue tempValue
      * @return array of elements smaller then value
@@ -165,7 +165,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find such elements that are greater than the given value
+     * find such elements that are greater than the given value.
      *
      * @param tempValue tempValue
      * @return array of elements greater then value
@@ -186,7 +186,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * returns an immutable instance of a class
+     * returns an immutable instance of a class.
      *
      * @return summaryStatistics
      */
@@ -200,7 +200,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * add new temperatures
+     * add new temperatures.
      *
      * @param temps temps
      * @return length of new array
@@ -227,7 +227,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * check for correct bounds
+     * check for correct bounds.
      *
      * @param temps temps
      * @return true / false
@@ -255,7 +255,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the total sum of elements in the array
+     * find the total sum of elements in the array.
      *
      * @return sum
      */
@@ -269,7 +269,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * find the mean value of elements in the array
+     * find the mean value of elements in the array.
      *
      * @return mean
      */

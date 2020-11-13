@@ -1,7 +1,7 @@
 package ua.edu.ucu.tempseries;
 
 /**
- * Immutable instance of a class
+ * Immutable instance of a class.
  *
  * @author Yaroslav Prytula
  * @version 1.0
@@ -15,7 +15,7 @@ public final class TempSummaryStatistics {
     private final double maxTemp;
 
     /**
-     * Constructor for statistics class
+     * Constructor for statistics class.
      *
      * @param avrTemp avrTemp
      * @param devTemp devTemp
@@ -31,7 +31,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * Returns new instance of a class
+     * Returns new instance of a class.
      *
      * @param avrTemp avrTemp
      * @param devTemp devTemp
@@ -47,7 +47,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * get average temperature
+     * get average temperature.
      *
      * @return avrTemp
      */
@@ -57,7 +57,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * get temperature deviation
+     * get temperature deviation.
      *
      * @return devTemp
      */
@@ -66,7 +66,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * get min temperature
+     * get min temperature.
      *
      * @return minTemp
      */
@@ -75,7 +75,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * get max temperature
+     * get max temperature.
      *
      * @return maxTemp
      */
@@ -84,7 +84,7 @@ public final class TempSummaryStatistics {
     }
 
     /**
-     * represent class as a string
+     * represent class as a string.
      *
      * @return String
      */
