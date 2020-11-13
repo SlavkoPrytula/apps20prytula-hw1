@@ -301,7 +301,10 @@
 
         <module name="NeedBraces"/>
 
-
+        <module name="JavadocStyle">
+            <property name="severity" value="warning"/>
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
 
     </module>
 
