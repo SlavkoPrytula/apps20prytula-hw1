@@ -1,20 +1,30 @@
 package ua.edu.ucu.tempseries;
 
-
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
+/**
+ * This is the class used to perform different
+ * calculations and transformations with arrays
+ * and its values.
+ *
+ * @author Yaroslav Prytula
+ * @version 1.0
+ */
 public class TemperatureSeriesAnalysis {
-    // define
+    // define locals
     private double[] temperatureSeries;
     private int index;
     private static int lowerBound = -273;
 
+    /**
+     * constructor with parameters.
+     *
+     * @param temperatureSeries - array of temperatures
+     */
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
         this.temperatureSeries = temperatureSeries;
-        System.out.println(Arrays.toString(temperatureSeries));
-        System.out.println(Arrays.toString(temperatureSeries));
         this.index = temperatureSeries.length;
     }
 
@@ -24,6 +34,12 @@ public class TemperatureSeriesAnalysis {
         this.index = 0;
     }
 
+    /**
+     * get average temperature.
+     *
+     * @return average
+     * @throws IllegalArgumentException IllegalArgumentException
+     */
     public double average() throws IllegalArgumentException {
         // get average temperature
         throwException();
@@ -32,11 +48,17 @@ public class TemperatureSeriesAnalysis {
         return sum / size;
     }
 
+    /**
+     * get the deviation of the temperature.
+     *
+     * @return deviation
+     * @throws IllegalArgumentException IllegalArgumentException
+     */
     public double deviation() throws IllegalArgumentException {
         // get the deviation of the temperature
         throwException();
         double deviation;
-        double mean = mean();
+        double mean = average();
         double summation = 0;
         for (double temp : temperatureSeries) {
             summation += (temp - mean) * (temp - mean);
@@ -45,6 +67,12 @@ public class TemperatureSeriesAnalysis {
         return deviation;
     }
 
+    /**
+     * find the minimum value.
+     *
+     * @return min
+     * @throws IllegalArgumentException IllegalArgumentException
+     */
     public double min() throws IllegalArgumentException {
         // find the minimum value
         throwException();
@@ -57,6 +85,12 @@ public class TemperatureSeriesAnalysis {
         return min;
     }
 
+    /**
+     * find the maximum value.
+     *
+     * @return max
+     * @throws IllegalArgumentException IllegalArgumentException
+     */
     public double max() throws IllegalArgumentException {
         // find the maximum value
         throwException();
@@ -69,11 +103,21 @@ public class TemperatureSeriesAnalysis {
         return max;
     }
 
+    /**
+     * find the closest to zero temperature.
+     *
+     * @return closest value to zero
+     */
     public double findTempClosestToZero() {
         // find the closest to zero temperature
         return findTempClosestToValue(0);
     }
 
+    /**
+     * find the closest to a given value temperature.
+     *
+     * @return closest value to a value
+     */
     public double findTempClosestToValue(double tempValue)
         // find the closest to a given value temperature
             throws IllegalArgumentException {
@@ -99,6 +143,12 @@ public class TemperatureSeriesAnalysis {
         }
     }
 
+    /**
+     * find such elements that are smaller than the given value.
+     *
+     * @param tempValue tempValue
+     * @return array of elements smaller then value
+     */
     public double[] findTempsLessThen(double tempValue) {
         // find such elements that are smaller than the given value
         double[] tempsLessThen = new double[0];
@@ -114,6 +164,12 @@ public class TemperatureSeriesAnalysis {
         return tempsLessThen;
     }
 
+    /**
+     * find such elements that are greater than the given value.
+     *
+     * @param tempValue tempValue
+     * @return array of elements greater then value
+     */
     public double[] findTempsGreaterThen(double tempValue) {
         // find such elements that are greater than the given value
         double[] tempsGreaterThen = new double[0];
@@ -129,6 +185,11 @@ public class TemperatureSeriesAnalysis {
         return tempsGreaterThen;
     }
 
+    /**
+     * returns an immutable instance of a class.
+     *
+     * @return summaryStatistics
+     */
     public TempSummaryStatistics summaryStatistics() {
         throwException();
         // returns an immutable instance of a class
@@ -138,6 +199,12 @@ public class TemperatureSeriesAnalysis {
                 max());
     }
 
+    /**
+     * add new temperatures.
+     *
+     * @param temps temps
+     * @return length of new array
+     */
     public int addTemps(double[] temps) {
         // add new temperatures
         if (!checkBounds(temps)) {
@@ -159,6 +226,12 @@ public class TemperatureSeriesAnalysis {
         return index;
     }
 
+    /**
+     * check for correct bounds.
+     *
+     * @param temps temps
+     * @return true / false
+     */
     public boolean checkBounds(double[] temps) {
         // check for correct bounds
         for (double temp : temps) {
@@ -181,6 +254,11 @@ public class TemperatureSeriesAnalysis {
         Arrays.sort(temperatureSeries);
     }
 
+    /**
+     * find the total sum of elements in the array.
+     *
+     * @return sum
+     */
     public double sum() {
         // find the total sum of elements in the array
         double sum = 0.0;
@@ -190,6 +268,11 @@ public class TemperatureSeriesAnalysis {
         return sum;
     }
 
+    /**
+     * find the mean value of elements in the array.
+     *
+     * @return mean
+     */
     public double mean() {
         // find the mean value of elements in the array
         if (temperatureSeries.length % 2 == 0) {

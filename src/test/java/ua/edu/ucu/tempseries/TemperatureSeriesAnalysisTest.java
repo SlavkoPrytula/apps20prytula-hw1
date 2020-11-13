@@ -111,7 +111,7 @@ public class TemperatureSeriesAnalysisTest {
         // setup input data and expected result
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double expResult = 9.920887057113392;
+        double expResult = 9.920383057120324;
 
         // call tested method
         TempSummaryStatistics stats = seriesAnalysis.summaryStatistics();
@@ -151,7 +151,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         String expResult = "Average: 8.0\n"
-                            + "Deviation: 9.920887057113392\n"
+                            + "Deviation: 9.920383057120324\n"
                             + "Min: -7.5\n"
                             + "Max: 20.4";
 
@@ -497,7 +497,7 @@ public class TemperatureSeriesAnalysisTest {
         // setup input data and expected result
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double expResult = 9.920887057113392;
+        double expResult = 9.920383057120324;
 
         // call tested method
         double actualResult = seriesAnalysis.deviation();
@@ -635,7 +635,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         String expResult = "Average: 8.0\n" +
-                            "Deviation: 9.920887057113392\n" +
+                            "Deviation: 9.920383057120324\n" +
                             "Min: -7.5\n" +
                             "Max: 20.4";
 
