@@ -16,7 +16,7 @@ public class TemperatureSeriesAnalysis {
     private double[] resultTemps = new double[0];
     private double[] temperatureSeries;
     private int index;
-    private static int lowerBound = -273;
+    private int lowerBound = -273;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
