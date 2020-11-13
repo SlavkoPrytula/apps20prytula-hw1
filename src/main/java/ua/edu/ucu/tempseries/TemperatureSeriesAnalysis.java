@@ -13,10 +13,10 @@ import java.util.InputMismatchException;
  */
 public class TemperatureSeriesAnalysis {
     // define locals
+    static final int LOWER_BOUND = -273;
     private double[] resultTemps = new double[0];
     private double[] temperatureSeries;
     private int index;
-    static final int lowerBound = -273;
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
@@ -189,7 +189,7 @@ public class TemperatureSeriesAnalysis {
     public boolean checkBounds(double[] temps) {
         // check for correct bounds
         for (double temp : temps) {
-            if (temp < lowerBound) {
+            if (temp < LOWER_BOUND) {
                 return false;
             }
         }
