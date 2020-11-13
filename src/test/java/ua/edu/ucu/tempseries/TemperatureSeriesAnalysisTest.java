@@ -10,11 +10,60 @@ public class TemperatureSeriesAnalysisTest {
 
     // --------------------- OTHER ---------------------
     @Test
-    public void testMean() {
+    public void testBuff1() {
         // setup input data and expected result
-        double[] temperatureSeries = {-1.0, 0, 1.0, 2.0};
+        double[] temperatureSeries = {-1.0, 0.0, 1.0, 2.0};
+        int indicator = 1;
+        double tempValue = 0;
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 2;
+
+        // call tested method
+        double actualResult = seriesAnalysis.getBuff(indicator, tempValue);
+        System.out.println(actualResult);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testBuff2() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0, 0.0, 1.0, 2.0};
+        int indicator = -1;
+        double tempValue = 0;
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1;
+
+        // call tested method
+        double actualResult = seriesAnalysis.getBuff(indicator, tempValue);
+        System.out.println(actualResult);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testMean1() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0, 0.0, 1.0, 2.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 0.5;
+
+        // call tested method
+        double actualResult = seriesAnalysis.mean();
+        System.out.println(actualResult);
+
+        // compare expected result with actual result
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testMean2() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-3.0, -1.0, 0.0, 1.0, 2.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 0.0;
 
         // call tested method
         double actualResult = seriesAnalysis.mean();
@@ -122,7 +171,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testStatTemperatureMin(){
         // setup input data and expected result
-        double[] temperatureSeries = {-7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
+        double[] temperatureSeries = {100.0, 35.6, -7.5, 0.1, -1.0, 1.0, 0.9, 15.3, 10.9, 20.4, 19.9, 20.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = -7.5;
 
@@ -340,8 +389,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testAverageWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.average();
@@ -351,8 +399,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDeviationWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.deviation();
@@ -362,8 +409,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testMinWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.min();
@@ -373,8 +419,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testMaxWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.max();
@@ -384,8 +429,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testClosestToZeroWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.findTempClosestToZero();
@@ -395,8 +439,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void closestToValueWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call function
         seriesAnalysis.findTempClosestToValue(0);
@@ -406,8 +449,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testLessThenWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
         double[] expResult = {};
 
         // call tested method
@@ -421,8 +463,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testGreaterThenWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
         double[] expResult = {};
 
         // call tested method
@@ -436,9 +477,8 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testAddTempsWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
         double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
         int expResult = 4;
 
         // call tested method
@@ -452,9 +492,8 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = InputMismatchException.class)
     public void testAddTempsWithEmptyArrayError() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
         double[] newTemperatureSeries = {3.0, -5.0, 1.0, 5.0, -274.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call tested method
         seriesAnalysis.addTemps(newTemperatureSeries);
@@ -464,8 +503,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test(expected = IllegalArgumentException.class)
     public void testSummaryStatisticsWithEmptyArray() {
         // setup input data and expected result
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
 
         // call tested method
         seriesAnalysis.summaryStatistics();

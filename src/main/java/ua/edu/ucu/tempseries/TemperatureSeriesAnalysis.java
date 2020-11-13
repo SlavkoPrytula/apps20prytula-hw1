@@ -13,18 +13,15 @@ import java.util.InputMismatchException;
  */
 public class TemperatureSeriesAnalysis {
     // define locals
+    double[] resultTemps = new double[0];
     private double[] temperatureSeries;
     private int index;
-    private static int lowerBound = -273;
+    static int lowerBound = -273;
 
-    /**
-     * constructor with parameters.
-     *
-     * @param temperatureSeries - array of temperatures
-     */
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         // constructor with parameters
         this.temperatureSeries = temperatureSeries;
+        checkBounds(temperatureSeries);
         this.index = temperatureSeries.length;
     }
 
@@ -34,12 +31,6 @@ public class TemperatureSeriesAnalysis {
         this.index = 0;
     }
 
-    /**
-     * get average temperature.
-     *
-     * @return average
-     * @throws IllegalArgumentException IllegalArgumentException
-     */
     public double average() throws IllegalArgumentException {
         // get average temperature
         throwException();
@@ -48,12 +39,6 @@ public class TemperatureSeriesAnalysis {
         return sum / size;
     }
 
-    /**
-     * get the deviation of the temperature.
-     *
-     * @return deviation
-     * @throws IllegalArgumentException IllegalArgumentException
-     */
     public double deviation() throws IllegalArgumentException {
         // get the deviation of the temperature
         throwException();
@@ -67,12 +52,6 @@ public class TemperatureSeriesAnalysis {
         return deviation;
     }
 
-    /**
-     * find the minimum value.
-     *
-     * @return min
-     * @throws IllegalArgumentException IllegalArgumentException
-     */
     public double min() throws IllegalArgumentException {
         // find the minimum value
         throwException();
@@ -85,12 +64,6 @@ public class TemperatureSeriesAnalysis {
         return min;
     }
 
-    /**
-     * find the maximum value.
-     *
-     * @return max
-     * @throws IllegalArgumentException IllegalArgumentException
-     */
     public double max() throws IllegalArgumentException {
         // find the maximum value
         throwException();
@@ -103,21 +76,11 @@ public class TemperatureSeriesAnalysis {
         return max;
     }
 
-    /**
-     * find the closest to zero temperature.
-     *
-     * @return closest value to zero
-     */
     public double findTempClosestToZero() {
         // find the closest to zero temperature
         return findTempClosestToValue(0);
     }
 
-    /**
-     * find the closest to a given value temperature.
-     *
-     * @return closest value to a value
-     */
     public double findTempClosestToValue(double tempValue)
         // find the closest to a given value temperature
             throws IllegalArgumentException {
@@ -143,53 +106,50 @@ public class TemperatureSeriesAnalysis {
         }
     }
 
-    /**
-     * find such elements that are smaller than the given value.
-     *
-     * @param tempValue tempValue
-     * @return array of elements smaller then value
-     */
+    public int getBuff(int indicator, double tempValue) {
+        int addBuff = 0;
+        if (indicator == 1) {
+            for (double temp : temperatureSeries) {
+                if (temp > tempValue) {
+                    addBuff++;
+                }
+            }
+        } else {
+            for (double temp : temperatureSeries) {
+                if (temp < tempValue) {
+                    addBuff++;
+                }
+            }
+        }
+        return addBuff;
+    }
+
     public double[] findTempsLessThen(double tempValue) {
         // find such elements that are smaller than the given value
-        double[] tempsLessThen = new double[0];
         int ind = 0;
+        resultTemps = Arrays.copyOf(resultTemps,
+                resultTemps.length + getBuff(-1, tempValue));
         for (double temp : temperatureSeries) {
             if (temp < tempValue) {
-                // increase buff size by 1 and add
-                tempsLessThen = Arrays.copyOf(tempsLessThen,
-                        tempsLessThen.length + 1);
-                tempsLessThen[ind++] = temp;
+                resultTemps[ind++] = temp;
             }
         }
-        return tempsLessThen;
+        return resultTemps;
     }
 
-    /**
-     * find such elements that are greater than the given value.
-     *
-     * @param tempValue tempValue
-     * @return array of elements greater then value
-     */
     public double[] findTempsGreaterThen(double tempValue) {
         // find such elements that are greater than the given value
-        double[] tempsGreaterThen = new double[0];
         int ind = 0;
+        resultTemps = Arrays.copyOf(resultTemps,
+                resultTemps.length + getBuff(1, tempValue));
         for (double temp : temperatureSeries) {
             if (temp > tempValue) {
-                // increase buff size by 1 and add
-                tempsGreaterThen = Arrays.copyOf(tempsGreaterThen,
-                        tempsGreaterThen.length + 1);
-                tempsGreaterThen[ind++] = temp;
+                resultTemps[ind++] = temp;
             }
         }
-        return tempsGreaterThen;
+        return resultTemps;
     }
 
-    /**
-     * returns an immutable instance of a class.
-     *
-     * @return summaryStatistics
-     */
     public TempSummaryStatistics summaryStatistics() {
         throwException();
         // returns an immutable instance of a class
@@ -199,26 +159,26 @@ public class TemperatureSeriesAnalysis {
                 max());
     }
 
-    /**
-     * add new temperatures.
-     *
-     * @param temps temps
-     * @return length of new array
-     */
     public int addTemps(double[] temps) {
         // add new temperatures
+        int buffCounter = temperatureSeries.length;
         if (!checkBounds(temps)) {
             throw new InputMismatchException();
         }
-        // set buff to 2
+
+        // reduce extra amount
         if (temperatureSeries.length == 0) {
-            temperatureSeries = Arrays.copyOf(temperatureSeries, 2);
+            buffCounter++;
         }
+
         // increase buff size
-        while (temperatureSeries.length < index + temps.length) {
-            temperatureSeries = Arrays.copyOf(temperatureSeries,
-                    temperatureSeries.length * 2);
+        while (buffCounter <= index + temps.length) {
+            buffCounter *= 2;
         }
+
+        // copy to new array with new buff size
+        temperatureSeries = Arrays.copyOf(temperatureSeries,
+                temperatureSeries.length + buffCounter);
         // insert new elements
         for (double temp : temps) {
             temperatureSeries[index++] = temp;
@@ -226,12 +186,6 @@ public class TemperatureSeriesAnalysis {
         return index;
     }
 
-    /**
-     * check for correct bounds.
-     *
-     * @param temps temps
-     * @return true / false
-     */
     public boolean checkBounds(double[] temps) {
         // check for correct bounds
         for (double temp : temps) {
@@ -254,11 +208,6 @@ public class TemperatureSeriesAnalysis {
         Arrays.sort(temperatureSeries);
     }
 
-    /**
-     * find the total sum of elements in the array.
-     *
-     * @return sum
-     */
     public double sum() {
         // find the total sum of elements in the array
         double sum = 0.0;
@@ -268,11 +217,6 @@ public class TemperatureSeriesAnalysis {
         return sum;
     }
 
-    /**
-     * find the mean value of elements in the array.
-     *
-     * @return mean
-     */
     public double mean() {
         // find the mean value of elements in the array
         if (temperatureSeries.length % 2 == 0) {
